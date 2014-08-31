@@ -1,0 +1,33 @@
+{
+  "name": "lil-uri",
+  "description": "Tiny URI parser with semantic API",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": "lil-js/uri",
+  "author": "Tomas Aparicio",
+  "main": "./uri.js",
+  "keywords": [
+    "lil",
+    "tiny",
+    "micro",
+    "uri",
+    "url",
+    "parse",
+    "schema",
+    "host"
+  ],
+  "ignore": [
+    "**/.*",
+    ".*",
+    "*.md",
+    "*.sh",
+    "test",
+    "Makefile",
+    ".editorconfig",
+    ".gitignore",
+    ".travis.yml",
+    ".npmignore",
+    "package.json",
+    "component.json"
+  ]
+}

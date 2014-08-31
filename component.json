@@ -1,0 +1,24 @@
+{
+  "name": "lil-type",
+  "description": "Complete type checking helpers",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": "lil-js/type",
+  "author": "Tomas Aparicio",
+  "license": "MIT",
+  "scripts": [
+    "type.js",
+    "type.min.js"
+  ],
+  "keywords": [
+    "lil",
+    "tiny",
+    "micro",
+    "type",
+    "checking",
+    "lodash",
+    "underscore",
+    "isType",
+    "typing"
+  ]
+}
