@@ -1,6 +1,21 @@
 {
   "name": "lil-uri",
-  "private": true,
+  "description": "Tiny URI parser and builder with chainable API",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": "lil-js/uri",
+  "author": "Tomas Aparicio",
+  "main": "./uri.js",
+  "keywords": [
+    "lil",
+    "tiny",
+    "micro",
+    "uri",
+    "url",
+    "parse",
+    "schema",
+    "host"
+  ],
   "scripts": {
     "test": "make test"
   },

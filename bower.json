@@ -1,6 +1,6 @@
 {
   "name": "lil-uri",
-  "description": "Tiny URI parser with semantic API",
+  "description": "Tiny URI parser and builder with chainable API",
   "version": "0.1.0",
   "license": "MIT",
   "repository": "lil-js/uri",
