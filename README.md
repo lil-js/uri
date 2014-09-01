@@ -1,6 +1,6 @@
 # [lil](http://lil-js.github.io)'-uri [![Build Status](https://api.travis-ci.org/lil-js/uri.svg?branch=master)][travis]
 
-Tiny URI parser with semantic API 
+Tiny URI parser with semantic API
 
 <table>
 <tr>
@@ -12,6 +12,9 @@ Tiny URI parser with semantic API
 <tr>
 <td><b>Size</b></td><td>2 KB / 1 KB (gzipped)</td>
 </tr>
+<tr>
+<td><b>Environemtn</b></td><td>3 KB / 1 KB (gzipped)</td>
+</tr>
 </table>
 
 ## Features
@@ -20,6 +23,12 @@ Tiny URI parser with semantic API
 
 ## Installation
 
+#### Node.js
+```bash
+npm install lil-uri
+```
+
+#### Browser
 Via [Bower](http://bower.io)
 ```bash
 bower install lil-uri
@@ -28,7 +37,6 @@ Via [Component](http://component.io/)
 ```bash
 component install lil-js/uri
 ```
-
 Or loading the script remotely
 ```html
 <script src="//cdn.rawgit.com/lil-js/uri/0.1.0/uri.js"></script>
@@ -38,6 +46,7 @@ Or loading the script remotely
 
 Cross-browser support guaranteed running tests in [BrowserStack](http://browserstack.com/)
 
+- Node.js
 - Chrome >= 5
 - Firefox >= 3
 - Safari >= 5
