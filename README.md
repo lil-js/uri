@@ -19,7 +19,12 @@ Tiny URI parser with semantic API
 
 ## Features
 
-- Full type checking support
+- URI parsing
+- URI builder
+- RFC 3986 compliant
+- Full and partial URI support
+- Query mapping values
+- Transparent special characters decoding
 
 ## Installation
 
