@@ -7,19 +7,18 @@
   "author": "Tomas Aparicio",
   "license": "MIT",
   "scripts": [
-    "type.js",
-    "type.min.js",
+    "uri.js",
+    "uri.min.js",
     "uri.min.js.map"
   ],
   "keywords": [
     "lil",
     "tiny",
     "micro",
-    "type",
-    "checking",
-    "lodash",
-    "underscore",
-    "isType",
-    "typing"
+    "uri",
+    "url",
+    "parse",
+    "schema",
+    "host"
   ]
 }
