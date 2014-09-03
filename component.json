@@ -1,14 +1,15 @@
 {
-  "name": "lil-type",
-  "description": "Complete type checking helpers",
+  "name": "lil-uri",
+  "description": "Tiny URI parser and builder",
   "version": "0.1.0",
   "license": "MIT",
-  "repository": "lil-js/type",
+  "repository": "lil-js/uri",
   "author": "Tomas Aparicio",
   "license": "MIT",
   "scripts": [
     "type.js",
-    "type.min.js"
+    "type.min.js",
+    "uri.min.js.map"
   ],
   "keywords": [
     "lil",

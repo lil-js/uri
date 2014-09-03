@@ -14,25 +14,40 @@
   var VERSION = '0.1.0'
   var REGEX = /^(?:([^:\/?#]+):)?(?:\/\/((?:([^\/?#@]*)@)?([^\/?#:]*)(?:\:(\d*))?))?([^?#]*)(?:\?([^#]*))?(?:#((?:.|\n)*))?/i
 
+  function mapSearchParams(search) {
+    var map = {}
+    if (search) {
+      search.split('&').forEach(function (values) {
+        if (values) {
+          values = values.split('=')
+          map[values[0]] = values[1]
+        }
+      })
+      return map
+    }
+  }
+
   function uriParts(parts) {
     var auth = (parts[3] || '').split(':')
+    var host = auth.length ? (parts[2] || '').replace(/(.*\@)/, '') : parts[2]
     return {
       uri: parts[0],
       protocol: parts[1],
-      host: parts[2].replace(/(.*\@)/, ''),
+      host: host,
+      hostname: parts[4],
+      port: parts[5],
       auth: parts[3],
       user: auth[0],
       password: auth[1],
-      hostname: parts[4],
-      port: parts[5],
       path: parts[6],
-      query: parts[7],
+      search: parts[7],
+      query: mapSearchParams(parts[7]),
       fragment: parts[8]
     }
   }
 
   function uriParser(uri) {
-    var parts = (uri || '').match(REGEX)
+    var parts = decodeURIComponent(uri || '').match(REGEX)
     return uriParts(parts || [])
   }
 
