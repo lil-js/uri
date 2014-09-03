@@ -10,7 +10,9 @@
     <script>
       mocha.ui('bdd')
       mocha.reporter('html')
-      expect = chai.expect
+      require = function (module) {
+        return module === 'chai' ? chai : lil.uri
+      }
     </script>
     <script src="../uri.js"></script>
     <script src="uri.js"></script>

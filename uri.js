@@ -46,39 +46,39 @@
     }
   }
 
-  function uriParser(uri) {
+  function Parser(uri) {
     var parts = decodeURIComponent(uri || '').match(REGEX)
     return uriParts(parts || [])
   }
 
-  function URI(uri) {
+  function Builder(uri) {
     this.parts = {}
   }
 
-  URI.prototype.host = function (host) {
+  Builder.prototype.host = function (host) {
     this.parts.host = host
     return this
   }
 
-  URI.prototype.auth = function (auth) {
+  Builder.prototype.auth = function (auth) {
     this.parts.auth = auth
     return this
   }
 
-  URI.prototype.user = function (user) {
+  Builder.prototype.user = function (user) {
     this.parts.user = user
     return this
   }
 
-  URI.prototype.build = URI.prototype.get = function () {
+  Builder.prototype.build = Builder.prototype.get = function () {
     return this.parts
   }
 
   function uri(uri) {
     if (uri) {
-      return uriParser(uri)
+      return Parser(uri)
     } else {
-      return new URI()
+      return Builder()
     }
   }
 

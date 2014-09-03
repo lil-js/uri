@@ -3,7 +3,6 @@ MOCHA = ./node_modules/.bin/mocha
 UGLIFYJS = ./node_modules/.bin/uglifyjs
 BANNER = "/*! lil-uri - v0.1 - MIT License - https://github.com/lil-js/uri */"
 MOCHA_PHANTOM = ./node_modules/.bin/mocha-phantomjs
-MOCHA = ./node_modules/.bin/mocha
 
 define release
 	VERSION=`node -pe "require('./package.json').version"` && \
@@ -32,6 +31,7 @@ uglify:
 
 mocha:
 	$(MOCHA_PHANTOM) --reporter spec --ui bdd test/runner.html
+	$(MOCHA) --reporter spec --ui bdd
 
 loc:
 	wc -l uri.js
