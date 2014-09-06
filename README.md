@@ -66,7 +66,7 @@ Otherwise, global fallback will be used, exposed via `lil.uri`
 var uri = require('lil-uri')
 ```
 
-Parser
+##### Parser
 ```js
 var url = uri('http://user:pass@example.com:8080/bar/foo.xml?foo=bar&hello=world&#frament=1')
 url.protocol() // -> http
@@ -82,28 +82,50 @@ url.query() // -> { foo: 'bar', hello: 'world' }
 url.frament() // -> fragment=1
 ```
 
-Builder
+##### Builder
 ```js
-var url = uri('http://user:pass@example.com:8080/bar/foo.xml?foo=bar&hello=world&#frament=1')
-url.protocol() // -> http
-url.host() // -> example.com:8080
-url.hostname() // -> example.com
-url.port() // -> 8080
-url.auth() // -> { user: 'user', password: 'pass' }
-url.user() // -> user
-url.password() // -> pass
-url.path() // -> /bar/foo.xml
-url.search() // -> foo=bar&hello=world
-url.query() // -> { foo: 'bar', hello: 'world' }
-url.frament() // -> fragment=1
+uri()
+  .protocol('https')
+  .host('example.com')
+  .port('8080')
+  .auth('user:pass')
+  .path('/bar/foo.xml')
+  .query({ foo: 'bar', hello: 'world' })
+  .fragment('fragment=1')
+  .build() // -> http://@example.com:8080/bar/foo.xml?foo=bar&hello=world&#frament=1
 ```
 
 ## API
 
-#### uri.
+#### uri([ uri ])
 
-#### uri.type.VERSION
+#### uri#protocol([ protocol ])
 
+#### uri#host([ host ])
+
+#### uri#hostname([ hostname ])
+
+#### uri#port([ port ])
+
+#### uri#auth([ auth ])
+
+#### uri#user([ user ])
+
+#### uri#password([ password ])
+
+#### uri#path([ path ])
+
+#### uri#search([ search ])
+
+#### uri#query([ query ])
+
+#### uri#fragment([ fragment ])
+
+#### uri#build()
+
+#### uri#parse(uri)
+
+#### uri.VERSION
 
 ## Contributing
 
