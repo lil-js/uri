@@ -10,7 +10,7 @@ Tiny URI parser with semantic API
 <td><b>Version</b></td><td>0.1.0</td>
 </tr>
 <tr>
-<td><b>Size</b></td><td>2 KB / >1 KB (gzipped)</td>
+<td><b>Size</b></td><td>3 KB / 1 KB (gzipped)</td>
 </tr>
 <tr>
 <td><b>Environment</b></td><td>Node, Browser</td>
@@ -23,8 +23,8 @@ Tiny URI parser with semantic API
 - URI builder
 - RFC 3986 compliant
 - Full and partial URI support
-- Query mapping values
-- Automatic special characters decoding
+- Automatic query mapping values
+- Support for special characters decoding
 
 ## Installation
 
@@ -61,7 +61,7 @@ Cross-browser support guaranteed running tests in [BrowserStack](http://browsers
 ### Usage
 
 You could fetch de module via `require()` if it's available.
-Otherwise, global fallback will be use, exposed via `lil.uri`
+Otherwise, global fallback will be used, exposed via `lil.uri`
 ```js
 var uri = require('lil-uri')
 ```
@@ -84,7 +84,18 @@ url.frament() // -> fragment=1
 
 Builder
 ```js
-
+var url = uri('http://user:pass@example.com:8080/bar/foo.xml?foo=bar&hello=world&#frament=1')
+url.protocol() // -> http
+url.host() // -> example.com:8080
+url.hostname() // -> example.com
+url.port() // -> 8080
+url.auth() // -> { user: 'user', password: 'pass' }
+url.user() // -> user
+url.password() // -> pass
+url.path() // -> /bar/foo.xml
+url.search() // -> foo=bar&hello=world
+url.query() // -> { foo: 'bar', hello: 'world' }
+url.frament() // -> fragment=1
 ```
 
 ## API
