@@ -1,4 +1,6 @@
-# [lil](http://lil-js.github.io)'-uri [![Build Status](https://api.travis-ci.org/lil-js/uri.svg?branch=master)][travis]
+# [lil](http://lil-js.github.io)'-uri [![Build Status](https://api.travis-ci.org/lil-js/uri.svg?branch=master)][travis] [![Stories in Ready](https://badge.waffle.io/lil-js/uri.png?label=ready&title=Ready)](https://waffle.io/lil-js/uri)  [![Gitter chat](https://badges.gitter.im/lil-js/uri.png)](https://gitter.im/lil-js/uri)
+
+<img align="center" height="150" src="http://lil-js.github.io/img/liljs-logo.png" />
 
 URI parser and builder with semantic API
 
