@@ -1,6 +1,6 @@
 # [lil](http://lil-js.github.io)'-uri [![Build Status](https://api.travis-ci.org/lil-js/uri.svg?branch=master)][travis]
 
-Tiny URI parser with semantic API
+URI parser and builder with semantic API
 
 <table>
 <tr>
