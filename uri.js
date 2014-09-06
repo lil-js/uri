@@ -20,14 +20,40 @@
       search.split('&').forEach(function (values) {
         if (values) {
           values = values.split('=')
-          map[values[0]] = values[1]
+          if (map.hasOwnProperty(values[0])) {
+            map[values[0]] = Array.isArray(map[values[0]]) ? map[values[0]] : [ map[values[0]] ]
+            map[values[0]].push(values[1])
+          } else {
+            map[values[0]] = values[1]
+          }
         }
       })
       return map
     }
   }
 
-  function uriParts(parts) {
+  function accessor(type) {
+    return function (value) {
+      if (value) {
+        this.parts[type] = decodeURIComponent(value)
+        return this
+      }
+      this.parts = this.parse(this.build())
+      return this.parts[type]
+    }
+  }
+
+  function URI(uri) {
+    this.uri = uri || null
+    if (typeof uri === 'string' && uri.length) {
+      this.parts = this.parse(uri)
+    } else {
+      this.parts = {}
+    }
+  }
+
+  URI.prototype.parse = function (uri) {
+    var parts = decodeURIComponent(uri || '').match(REGEX)
     var auth = (parts[3] || '').split(':')
     var host = auth.length ? (parts[2] || '').replace(/(.*\@)/, '') : parts[2]
     return {
@@ -46,43 +72,90 @@
     }
   }
 
-  function Parser(uri) {
-    var parts = decodeURIComponent(uri || '').match(REGEX)
-    return uriParts(parts || [])
+
+  URI.prototype.protocol = function (host) {
+    return accessor('protocol').call(this, host)
   }
 
-  function Builder(uri) {
-    this.parts = {}
+  URI.prototype.host = function (host) {
+    return accessor('host').call(this, host)
   }
 
-  Builder.prototype.host = function (host) {
-    this.parts.host = host
-    return this
+  URI.prototype.hostname = function (hostname) {
+    return accessor('hostname').call(this, hostname)
   }
 
-  Builder.prototype.auth = function (auth) {
-    this.parts.auth = auth
-    return this
+  URI.prototype.port = function (port) {
+    return accessor('port').call(this, port)
   }
 
-  Builder.prototype.user = function (user) {
-    this.parts.user = user
-    return this
+  URI.prototype.auth = function (auth) {
+    return accessor('host').call(this, auth)
   }
 
-  Builder.prototype.build = Builder.prototype.get = function () {
-    return this.parts
+  URI.prototype.user = function (user) {
+    return accessor('user').call(this, user)
+  }
+
+  URI.prototype.password = function (password) {
+    return accessor('password').call(this, password)
+  }
+
+  URI.prototype.path = function (path) {
+    return accessor('path').call(this, path)
+  }
+
+  URI.prototype.search = function (search) {
+    return accessor('search').call(this, search)
+  }
+
+  URI.prototype.query = function (query) {
+    return query && typeof query === 'object' ? accessor('query').call(this, query) : this.parts.query
+  }
+
+  URI.prototype.fragment = function (fragment) {
+    return accessor('fragment').call(this, fragment)
+  }
+
+  URI.prototype.get = function (value) {
+    return this.parts[value] || ''
+  }
+
+  URI.prototype.build = URI.prototype.toString = URI.prototype.valueOf = function () {
+    var p = this.parts, buf = []
+
+    if (p.protocol) buf.push(p.protocol + '://')
+    if (p.auth) buf.push(p.auth + '@')
+    else if (p.user) buf.push(p.user + (p.password ? ':' + p.password : '') + '@')
+
+    if (p.host) buf.push(p.host)
+    else {
+      if (p.hostname) buf.push(p.hostname)
+      if (p.port) buf.push(':' + p.port)
+    }
+
+    if (p.path) buf.push(p.path)
+    if (p.query) {
+      if (!p.path) buf.push('/')
+      buf.push('?' + (Object.keys(p.query).map(function (name) {
+        return name + (p.query[name] ? '=' + p.query[name] : '')
+      }).join('&')))
+    } else if (p.search) {
+      buf.push('?' + p.search)
+    }
+
+    if (p.fragment) {
+      if (!p.path) buf.push('/')
+      buf.push('#' + p.fragment)
+    }
+
+    return this.url = buf.filter(function (part) { return typeof part === 'string' }).join('')
   }
 
   function uri(uri) {
-    if (uri) {
-      return Parser(uri)
-    } else {
-      return Builder()
-    }
+    return new URI(uri)
   }
 
   uri.VERSION = VERSION
-
   exports.uri = uri
 }))
