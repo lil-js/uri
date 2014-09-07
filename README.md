@@ -121,7 +121,7 @@ uri()
 
 #### uri#query([ query ])
 
-#### uri#fragment([ fragment ])
+#### uri#hash([ fragment ])
 
 #### uri#build()
 
