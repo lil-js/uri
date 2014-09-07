@@ -12,7 +12,11 @@
   }
 }(this, function (exports) {
   var VERSION = '0.1.0'
-  var REGEX = /^(?:([^:\/?#]+):)?(?:\/\/((?:([^\/?#@]*)@)?([^\/?#:]*)(?:\:(\d*))?))?([^?#]*)(?:\?([^#]*))?(?:#((?:.|\n)*))?/i
+  var REGEX = /^(?:([^:\/?#]+):\/\/)?((?:([^\/?#@]*)@)?([^\/?#:]*)(?:\:(\d*))?)?([^?#]*)(?:\?([^#]*))?(?:#((?:.|\n)*))?/i
+
+  function isStr(o) {
+    return typeof o === 'string'
+  }
 
   function mapSearchParams(search) {
     var map = {}
@@ -35,7 +39,7 @@
   function accessor(type) {
     return function (value) {
       if (value) {
-        this.parts[type] = decodeURIComponent(value)
+        this.parts[type] = isStr(value) ? decodeURIComponent(value) : value
         return this
       }
       this.parts = this.parse(this.build())
@@ -45,7 +49,7 @@
 
   function URI(uri) {
     this.uri = uri || null
-    if (typeof uri === 'string' && uri.length) {
+    if (isStr(uri) && uri.length) {
       this.parts = this.parse(uri)
     } else {
       this.parts = {}
@@ -135,10 +139,16 @@
     }
 
     if (p.path) buf.push(p.path)
-    if (p.query) {
+    if (p.query && typeof p.query === 'object') {
       if (!p.path) buf.push('/')
       buf.push('?' + (Object.keys(p.query).map(function (name) {
-        return name + (p.query[name] ? '=' + p.query[name] : '')
+        if (Array.isArray(p.query[name])) {
+          return p.query[name].map(function (value) {
+            return name + (value ? '=' + value : '')
+          }).join('&')
+        } else {
+          return name + (p.query[name] ? '=' + p.query[name] : '')
+        }
       }).join('&')))
     } else if (p.search) {
       buf.push('?' + p.search)
@@ -149,7 +159,7 @@
       buf.push('#' + p.fragment)
     }
 
-    return this.url = buf.filter(function (part) { return typeof part === 'string' }).join('')
+    return this.url = buf.filter(function (part) { return isStr(part) }).join('')
   }
 
   function uri(uri) {
