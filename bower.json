@@ -14,7 +14,9 @@
     "url",
     "parse",
     "schema",
-    "host"
+    "host",
+    "parser",
+    "builder"
   ],
   "ignore": [
     "**/.*",
