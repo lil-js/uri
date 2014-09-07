@@ -72,7 +72,7 @@
       path: parts[6],
       search: parts[7],
       query: mapSearchParams(parts[7]),
-      fragment: parts[8]
+      hash: parts[8]
     }
   }
 
@@ -117,8 +117,8 @@
     return query && typeof query === 'object' ? accessor('query').call(this, query) : this.parts.query
   }
 
-  URI.prototype.fragment = function (fragment) {
-    return accessor('fragment').call(this, fragment)
+  URI.prototype.hash = function (hash) {
+    return accessor('hash').call(this, hash)
   }
 
   URI.prototype.get = function (value) {
@@ -154,9 +154,9 @@
       buf.push('?' + p.search)
     }
 
-    if (p.fragment) {
+    if (p.hash) {
       if (!p.path) buf.push('/')
-      buf.push('#' + p.fragment)
+      buf.push('#' + p.hash)
     }
 
     return this.url = buf.filter(function (part) { return isStr(part) }).join('')

@@ -70,7 +70,7 @@ var uri = require('lil-uri')
 
 ##### Parser
 ```js
-var url = uri('http://user:pass@example.com:8080/bar/foo.xml?foo=bar&hello=world&#frament=1')
+var url = uri('http://user:pass@example.com:8080/bar/foo.xml?foo=bar&hello=world&#hash=1')
 url.protocol() // -> http
 url.host() // -> example.com:8080
 url.hostname() // -> example.com
@@ -81,7 +81,7 @@ url.password() // -> pass
 url.path() // -> /bar/foo.xml
 url.search() // -> foo=bar&hello=world
 url.query() // -> { foo: 'bar', hello: 'world' }
-url.frament() // -> fragment=1
+url.hash() // -> hash=1
 ```
 
 ##### Builder
@@ -93,7 +93,7 @@ uri()
   .auth('user:pass')
   .path('/bar/foo.xml')
   .query({ foo: 'bar', hello: 'world' })
-  .fragment('fragment=1')
+  .hash('hash=1')
   .build() // -> http://@example.com:8080/bar/foo.xml?foo=bar&hello=world&#frament=1
 ```
 

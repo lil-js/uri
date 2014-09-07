@@ -88,7 +88,7 @@ describe('uri', function () {
       })
     })
 
-    describe('host + path + search + fragment', function () {
+    describe('host + path + search + hash', function () {
       var url = 'http://www.google.com/some-awesome?name=John&surname=Norris#type=actor'
 
       it('should match the protocol', function () {
@@ -107,8 +107,8 @@ describe('uri', function () {
         expect(uri(url).search()).to.be.equal('name=John&surname=Norris')
       })
 
-      it('should match the fragment', function () {
-        expect(uri(url).fragment()).to.be.equal('type=actor')
+      it('should match the hash', function () {
+        expect(uri(url).hash()).to.be.equal('type=actor')
       })
     })
 
@@ -140,12 +140,12 @@ describe('uri', function () {
         })
       })
 
-      it('should extract the fragment params', function () {
-        expect(uri('#name=John&age=30').fragment()).to.be.equal('name=John&age=30')
+      it('should extract the hash params', function () {
+        expect(uri('#name=John&age=30').hash()).to.be.equal('name=John&age=30')
       })
 
-      it('should extract the fragment params and search params', function () {
-        expect(uri('?query=value#name=John&age=30').fragment()).to.be.equal('name=John&age=30')
+      it('should extract the hash params and search params', function () {
+        expect(uri('?query=value#name=John&age=30').hash()).to.be.equal('name=John&age=30')
       })
     })
 
@@ -277,7 +277,7 @@ describe('uri', function () {
       })
     })
 
-    describe('host + path + search + fragment', function () {
+    describe('host + path + search + hash', function () {
       before(function () {
         url = uri()
       })
@@ -298,8 +298,8 @@ describe('uri', function () {
         expect(url.query({ name: 'Chuck', surname: 'Norris' }).search()).to.be.equal('name=Chuck&surname=Norris')
       })
 
-      it('should build the fragment', function () {
-        expect(url.fragment('type=actor').fragment()).to.be.equal('type=actor')
+      it('should build the hash', function () {
+        expect(url.hash('type=actor').hash()).to.be.equal('type=actor')
       })
 
       it('should build the URI', function () {
