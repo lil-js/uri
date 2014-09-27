@@ -11,6 +11,7 @@
     factory((root.lil = root.lil || {}))
   }
 }(this, function (exports) {
+  'use strict'
   var VERSION = '0.1.0'
   var REGEX = /^(?:([^:\/?#]+):\/\/)?((?:([^\/?#@]*)@)?([^\/?#:]*)(?:\:(\d*))?)?([^?#]*)(?:\?([^#]*))?(?:#((?:.|\n)*))?/i
 

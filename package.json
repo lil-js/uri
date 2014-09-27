@@ -22,7 +22,6 @@
     "test": "make test"
   },
   "devDependencies": {
-    "browserify": "^5.9.1",
     "chai": "^1.9.1",
     "mocha": "^1.21.3",
     "mocha-phantomjs": "^3.4.1",
