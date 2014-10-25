@@ -167,6 +167,12 @@
     return new URI(uri)
   }
 
+  function isURL(uri) {
+    return typeof uri === 'string' && REGEX.test(uri)
+  }
+
   uri.VERSION = VERSION
+  uri.is = uri.isURL = isURL
+
   exports.uri = uri
 }))

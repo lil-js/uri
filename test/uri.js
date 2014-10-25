@@ -13,6 +13,16 @@ describe('uri', function () {
     })
   })
 
+  describe('isURL', function () {
+    it('should be a valid URL schema', function () {
+      expect(uri.isURL('http://test.org/me')).to.be.true
+    })
+
+    it('should not be a valid URL', function () {
+      expect(uri.isURL(null)).to.be.false
+    })
+  })
+
   describe('parser', function () {
     describe('protocol + host', function () {
       var url = 'http://www.google.com/'
