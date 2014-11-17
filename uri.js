@@ -74,8 +74,7 @@
       hash: parts[8]
     }
   }
-
-
+  
   URI.prototype.protocol = function (host) {
     return accessor('protocol').call(this, host)
   }
@@ -131,8 +130,9 @@
     if (p.auth) buf.push(p.auth + '@')
     else if (p.user) buf.push(p.user + (p.password ? ':' + p.password : '') + '@')
 
-    if (p.host) buf.push(p.host)
-    else {
+    if (p.host) {
+      buf.push(p.host)
+    } else {
       if (p.hostname) buf.push(p.hostname)
       if (p.port) buf.push(':' + p.port)
     }
@@ -171,6 +171,7 @@
 
   uri.VERSION = VERSION
   uri.is = uri.isURL = isURL
+  uri.URI = URI
 
   exports.uri = uri
 }))
