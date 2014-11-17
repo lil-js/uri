@@ -131,6 +131,8 @@ uri()
 
 #### uri.is(url)
 
+#### uri.URI(uri)
+
 #### uri.VERSION
 
 ## Contributing
