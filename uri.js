@@ -21,16 +21,14 @@
 
   function mapSearchParams(search) {
     var map = {}
-    if (search) {
+    if (typeof search === 'string') {
       search.split('&').forEach(function (values) {
-        if (values) {
-          values = values.split('=')
-          if (map.hasOwnProperty(values[0])) {
-            map[values[0]] = Array.isArray(map[values[0]]) ? map[values[0]] : [ map[values[0]] ]
-            map[values[0]].push(values[1])
-          } else {
-            map[values[0]] = values[1]
-          }
+        values = values.split('=')
+        if (map.hasOwnProperty(values[0])) {
+          map[values[0]] = Array.isArray(map[values[0]]) ? map[values[0]] : [ map[values[0]] ]
+          map[values[0]].push(values[1])
+        } else {
+          map[values[0]] = values[1]
         }
       })
       return map
