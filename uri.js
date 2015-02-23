@@ -1,4 +1,4 @@
-/*! lil-uri - v0.1.2 - MIT License - https://github.com/lil-js/uri */
+/*! lil-uri - v0.2.0 - MIT License - https://github.com/lil-js/uri */
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['exports'], factory)
@@ -12,7 +12,7 @@
   }
 }(this, function (exports) {
   'use strict'
-  var VERSION = '0.1.2'
+  var VERSION = '0.2.0'
   var REGEX = /^(?:([^:\/?#]+):\/\/)?((?:([^\/?#@]*)@)?([^\/?#:]*)(?:\:(\d*))?)?([^?#]*)(?:\?([^#]*))?(?:#((?:.|\n)*))?/i
 
   function isStr(o) {
