@@ -74,7 +74,7 @@
       hash: parts[8]
     }
   }
-  
+
   URI.prototype.protocol = function (host) {
     return accessor('protocol').call(this, host)
   }
@@ -173,5 +173,5 @@
   uri.is = uri.isURL = isURL
   uri.URI = URI
 
-  exports.uri = uri
+  return exports.uri = uri
 }))
