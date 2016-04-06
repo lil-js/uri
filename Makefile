@@ -31,7 +31,6 @@ uglify:
 	$(UGLIFYJS) uri.js --mangle --preamble $(BANNER) --source-map uri.min.js.map --source-map-url http://cdn.rawgit.com/lil-js/uri/$(VERSION)/uri.min.js.map > uri.min.js
 
 mocha:
-	$(MOCHA_PHANTOM) --reporter spec --ui bdd test/runner.html
 	$(MOCHA) --reporter spec --ui bdd
 
 loc:
