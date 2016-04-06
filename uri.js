@@ -15,8 +15,12 @@
   var VERSION = '0.2.0'
   var REGEX = /^(?:([^:\/?#]+):\/\/)?((?:([^\/?#@]*)@)?([^\/?#:]*)(?:\:(\d*))?)?([^?#]*)(?:\?([^#]*))?(?:#((?:.|\n)*))?/i
 
-  function isStr(o) {
+  function isStr (o) {
     return typeof o === 'string'
+  }
+  
+  function decode (uri) {
+    return decodeURIComponent(escape(uri))
   }
 
   function mapSearchParams(search) {
@@ -38,7 +42,7 @@
   function accessor(type) {
     return function (value) {
       if (value) {
-        this.parts[type] = isStr(value) ? decodeURIComponent(value) : value
+        this.parts[type] = isStr(value) ? decode(value) : value
         return this
       }
       this.parts = this.parse(this.build())
@@ -56,7 +60,7 @@
   }
 
   URI.prototype.parse = function (uri) {
-    var parts = decodeURIComponent(uri || '').match(REGEX)
+    var parts = decode(uri || '').match(REGEX)
     var auth = (parts[3] || '').split(':')
     var host = auth.length ? (parts[2] || '').replace(/(.*\@)/, '') : parts[2]
     return {
