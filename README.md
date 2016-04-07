@@ -9,7 +9,7 @@ URI parser and builder with semantic API
 <td><b>Name</b></td><td>uri</td>
 </tr>
 <tr>
-<td><b>Version</b></td><td>0.2.0</td>
+<td><b>Version</b></td><td>0.2.1</td>
 </tr>
 <tr>
 <td><b>Size</b></td><td>3 KB / 1 KB (gzipped)</td>
