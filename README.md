@@ -9,7 +9,7 @@ URI parser and builder with semantic API
 <td><b>Name</b></td><td>uri</td>
 </tr>
 <tr>
-<td><b>Version</b></td><td>0.2.1</td>
+<td><b>Version</b></td><td>0.2.2</td>
 </tr>
 <tr>
 <td><b>Size</b></td><td>3 KB / 1 KB (gzipped)</td>
@@ -46,7 +46,7 @@ component install lil-js/uri
 ```
 Or loading the script remotely
 ```html
-<script src="//cdn.rawgit.com/lil-js/uri/0.2.0/uri.js"></script>
+<script src="//cdn.rawgit.com/lil-js/uri/0.2.2/uri.js"></script>
 ```
 
 ### Environments
