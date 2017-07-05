@@ -1,5 +1,5 @@
 /*! lil-uri - v0.2.0 - MIT License - https://github.com/lil-js/uri */
-(function (root, factory) {
+;(function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['exports'], factory)
   } else if (typeof exports === 'object') {
@@ -178,4 +178,4 @@
   uri.URI = URI
 
   return exports.uri = uri
-}))
+}));
