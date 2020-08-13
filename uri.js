@@ -151,7 +151,7 @@
             return name + (value ? '=' + value : '')
           }).join('&')
         } else {
-          return name + (p.query[name] ? '=' + p.query[name] : '')
+          return name + (p.query[name] != null ? '=' + p.query[name] : '')
         }
       }).join('&')))
     } else if (p.search) {
