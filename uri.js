@@ -21,7 +21,11 @@
   }
   
   function decode (uri) {
-    return decodeURIComponent(escape(uri))
+	  try{
+		return decodeURIComponent(uri)
+	  }catch(e){
+		return unescape(uri)
+	  }
   }
 
   function mapSearchParams(search) {
