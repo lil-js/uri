@@ -1,7 +1,7 @@
-VERSION = 0.2.2
+VERSION = 0.3.0
 BROWSERIFY = node ./node_modules/browserify/bin/cmd.js
 MOCHA = ./node_modules/.bin/mocha
-UGLIFYJS = ./node_modules/.bin/uglifyjs
+UGLIFYJS = ./node_modules/.bin/terser
 BANNER = "/*! lil-uri - v$(VERSION) - MIT License - https://github.com/lil-js/uri */"
 MOCHA_PHANTOM = ./node_modules/.bin/mocha-phantomjs
 
@@ -28,7 +28,7 @@ browser: uglify
 test: browser mocha
 
 uglify:
-	$(UGLIFYJS) uri.js --mangle --preamble $(BANNER) --source-map uri.min.js.map > uri.min.js
+	$(UGLIFYJS) uri.js --mangle --preamble $(BANNER) -o uri.min.js
 
 mocha:
 	$(MOCHA) --reporter spec --ui bdd

@@ -1,7 +1,7 @@
 {
   "name": "lil-uri",
   "description": "Tiny URI parser and builder with chainable API",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "license": "MIT",
   "repository": "lil-js/uri",
   "author": "Tomas Aparicio",
@@ -29,7 +29,6 @@
     ".gitignore",
     ".travis.yml",
     ".npmignore",
-    "package.json",
-    "component.json"
+    "package.json"
   ]
 }

@@ -25,5 +25,8 @@
     "chai": "^1.9.1",
     "mocha": "^1.21.3",
     "uglify-js": "^2.4.15"
+  },
+  "dependencies": {
+    "terser": "^5.5.1"
   }
 }
