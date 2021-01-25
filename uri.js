@@ -22,9 +22,9 @@
   
   function decode (uri) {
 	  try{
-		return decodeURIComponent(uri)
-	  }catch(e){
-		return unescape(uri)
+		  return decodeURIComponent(uri)
+	  } catch (e) {
+		  return unescape(uri)
 	  }
   }
 
