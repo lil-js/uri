@@ -1,4 +1,4 @@
-/*! lil-uri - v0.3.0 - MIT License - https://github.com/lil-js/uri */
+/*! lil-uri - v0.3.1 - MIT License - https://github.com/lil-js/uri */
 ;(function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['exports'], factory)
